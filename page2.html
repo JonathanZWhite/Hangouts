@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/[version]/jquery.mobile-[version].min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+        $(document).one("mobileinit", function () {
+            $.mobile.ignoreContentEnabled=true;
+        });
+    </script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
+</head>
+
+<body>
+    <div data-role="page" data-enhance="false">
+
+        <div data-role="header">
+            <h1>Page 2</h1>
+        </div>
+
+        <div role="main" data-enhance="false">
+            <!-- Page transition -->
+            <a href="index.html"  data-rel="back">Click me</a>
+        </div>
+
+        <div data-role="footer" data-enhance="false">
+            <h4>Page Footer</h4>
+        </div>
+
+    </div>
+</body>
+</html>

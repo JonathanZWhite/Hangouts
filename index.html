@@ -3,8 +3,8 @@
 <head>
 	<title>Hangouts</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/[version]/jquery.mobile-[version].min.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- Enables main stylesheet to overwrite JQuery Mobile -->
     <script>
         $(document).one("mobileinit", function () {
             $.mobile.ignoreContentEnabled=true;
@@ -12,22 +12,30 @@
     </script>
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
+	<script>
+		$( "#mypanel" ).trigger( "updatelayout" );
+	</script>
 </head>
 
 <body>
-<div data-role="page" data-enhance="false">
 
-	<div data-role="header">
-		<h1>Page Title</h1>
-	</div><!-- /header -->
+	<div data-role="page" data-enhance="false">
 
-	<div role="main" data-enhance="false">
-		<p>Page content goes here.</p>
-	</div><!-- /content -->
+		<a href="#nav-panel" data-icon="bars" data-iconpos="notext" class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all" data-role="button" role="button">Menu</a>
 
-	<div data-role="footer" data-enhance="false">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
+		<div data-role="header">
+			<h1>Home Page</h1>
+		</div>
+
+		<div role="main" data-enhance="false">
+			<!-- Page transition -->
+			<a href="page2.html" data-transition="slide">Click me to test transitions</a>
+		</div>
+
+		<div data-role="footer" data-enhance="false">
+			<h4>Page Footer</h4>
+		</div>
+
+	</div>
 </body>
 </html>
