@@ -4,13 +4,18 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+      <script>
+          $(document).one("mobileinit", function () {
+              $.mobile.ignoreContentEnabled=true;
+		  });
+      </script>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 </head>
 
 <body>
-	<div data-role="page">
+	<div data-role="page" data-enhance="false">
         <!-- /panel -->
         <div data-role="panel" id="leftPanel">
             <ul>
@@ -20,12 +25,12 @@
             </ul>
         </div>
         <!-- /Header -->
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-position="fixed" data-enhance="false">
             <h3>Hangouts</h3>
-            <a href="#leftPanel" data-icon="bars" data-role="button" data-iconpos="notext" data-iconshadow="false"></a>
+            <a href="#leftPanel" data-icon="bars" data-role="button" data-iconpos="notext" data-iconshadow="false" data-enhance="false"></a>
         </div>
         <!-- /content -->
-        <div data-role="content">
+        <div data-role="content" data-enhance="false">
 
         </div>
     </div>
