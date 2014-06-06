@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/style.css" />
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 </head>
 <body>
     <header>
@@ -28,7 +30,27 @@
                 </ul>
             </div>
         </nav>
-    </header>   
+    </header> 
+    <section class="sideMenuContainer">
+        <ul class="menu">
+            <li>
+                <i class="fa fa-home fa-2x selectedMenuItem"></i>
+                <div class="menuItem selectedMenuItem"><p>Home</p></div>
+            </li>
+            <li>
+                <i class="fa fa-comment-o fa-2x"></i>
+                <div class="menuItem"><p>Messages</p></div>
+            </li>
+            <li>
+                <i class="fa fa-user fa-2x"></i>
+                <div class="menuItem"><p>Profile</p></div>
+            </li>
+            <li>
+                <i class="fa fa-cogs fa-2x"></i>
+                <div class="menuItem"><p>Settings</p></div>
+            </li>
+        </ul>
+    </section>  
     <section class="card">
         <img class="cardProfile" src="img/profile1.png">
         <header class="overflowAuto">
@@ -50,6 +72,12 @@
             <p class="cardCopy">5/8</p>
         </div>
     </section>
+    <div id="myDiv">
+    <div id="color">
+        <div id="effect"></div>
+    </div>
+</div>
+<p>Hover the picture</p>
 </div>
 </body>
 </html>

@@ -177,3 +177,49 @@ html {
   -o-transition: -ms-transform 400ms ease-in;
   transition: transform 400ms ease-in;  
 }
+
+.sideMenuContainer {
+  width: 175px;
+  z-index: 1;
+  height: 92%;
+  position: absolute;
+  background-color: #fff;
+  display: none;
+}
+
+.menu {
+  list-style-type: none;
+  width: 85%;
+  height: 100%;
+  margin: 30px auto;
+}
+
+.menu li {
+  width: 100%;
+  float: left;
+  height: 45px;
+  margin-bottom: 20px;
+}
+
+.menu i {
+  float: left;
+  width: 30%;
+  float: left;
+  border-radius: 50px;
+}
+
+.menuItem {
+  float: left;
+  width: 70%;
+  height: 100%;
+  line-height: 45px;
+}
+
+.menuItem p {
+  margin-left: 8px;
+}
+
+.selectedMenuItem {
+  color: #2ecc71;
+}
+

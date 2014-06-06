@@ -72,10 +72,26 @@ $(document).ready(function() {
         }
     };
 
+    var menu = {
+        initializer: function() {
+            var self = this;
+
+            self.menuTransistion();
+        },
+
+        menuTransistion:function() {
+            $(".navIcon").click(function(){
+                $(".sideMenuContainer").show();
+            });
+            
+        }
+    };
+
 
     (function() {
         framework.initializer();
         card.initializer();
+        menu.initializer();
     }());
 
 });
