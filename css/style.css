@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('../fonts/HelveticaNeueLTPro-Lt.otf');
+  font-weight: 200;
+}
+
+
 html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -5,8 +12,8 @@ html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquot
 }
 
 *{
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 200;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
   -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
   outline: none !important;
@@ -21,17 +28,28 @@ body {
     background: url('../img/background.png');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    height: 100%;
+    width: 100%;
 }
 
 .plusIcon {
     font-size: 40px;
 }
 
+.overflowAuto {
+  overflow: auto;
+}
+
 /* Header
    ========================================================================== */
 
 .headerContainer {
-    margin: 0 auto;
+    margin: 2% auto 0 auto;
     width: 95%;
 }
 
@@ -64,4 +82,70 @@ body {
 .headerNav li:last-child {
     margin-top: 0px;
     text-align: right;
+}
+
+/* Cards
+   ========================================================================== */
+
+/* GLOBAL */
+
+.cardCopy {
+  color: #666667;
+  font-size: 14px;
+  margin-bottom: 10px; 
+}
+
+.cardTitle {
+  color: #322922;
+  font-size: 22px;
+}
+
+/* LOCAL */
+
+.card {
+  background: radial-gradient(ellipse 187px 184px at 13% 10%, transparent 57px, #ffffff 50px);
+  -webkit-border-radius: 2%; 
+  -moz-border-radius: 2%; 
+  border-radius: 2%; 
+  height: 75%;
+  margin: 10% auto 0 auto;
+  position: relative;
+  width: 90%;  
+}
+
+.cardAuthor {
+  color: #322922;
+  font-size: 22px;
+  word-wrap: break-all;
+}
+
+.cardEventContainer {
+  margin: 40px auto 0 auto;
+  width: 90%;
+}
+
+.cardLocation {
+  color: #666667;
+  font-size: 14px;
+  word-wrap: break-all;
+}
+
+.cardHeaderContainer {
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;    
+  box-sizing: border-box;         
+  padding: 25px 0 0 15px;
+  width: 60%;
+}
+
+.cardProfile {
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%; 
+  border-radius: 100%; 
+  border: 15px solid transparent;
+  float: left;
+  margin-left: -15px;
+  margin-top: -15px;
+  width: 28%;
 }
