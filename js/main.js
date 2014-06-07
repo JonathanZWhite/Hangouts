@@ -76,12 +76,14 @@ $(document).ready(function() {
         initializer: function() {
             var self = this;
 
-            self.menuTransistion();
+            self.menuTransition();
         },
 
-        menuTransistion:function() {
+        menuTransition:function() {
             $(".navIcon").click(function(){
+                $("#panel").toggleClass("bodySlide");
                 $(".sideMenuContainer").show();
+                
             });
             
         }

@@ -25,9 +25,10 @@ a {
 }
 
 body {
-    background: url('../img/background.png');
+    background: url('../img/menubg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #fff;
     height: 100%;
     width: 100%;
 }
@@ -180,17 +181,18 @@ html {
 
 .sideMenuContainer {
   width: 175px;
-  z-index: 1;
-  height: 92%;
+  z-index: -1;
+  height: 100%;
   position: absolute;
-  background-color: #fff;
+  background-color:rgba(0,0,0,.6);
   display: none;
+  top: 0;
 }
 
 .menu {
   list-style-type: none;
   width: 85%;
-  height: 100%;
+  height: 90%;
   margin: 30px auto;
 }
 
@@ -199,6 +201,7 @@ html {
   float: left;
   height: 45px;
   margin-bottom: 20px;
+  color: #F3F3F3;
 }
 
 .menu i {
@@ -212,7 +215,7 @@ html {
   float: left;
   width: 70%;
   height: 100%;
-  line-height: 45px;
+  line-height: 37px;
 }
 
 .menuItem p {
@@ -222,4 +225,25 @@ html {
 .selectedMenuItem {
   color: #2ecc71;
 }
+
+.bodySlide {
+    transform: translate(175px,0);
+    -webkit-transform: translate(175px,0); /** Chrome & Safari **/
+    -o-transform: translate(175px,0); /** Opera **/
+    -moz-transform: translate(175px,0); /** Firefox **/
+}
+
+#panel {
+    background: url('../img/background.png');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out; /** Chrome & Safari **/
+    -moz-transition: all 0.5s ease-in-out; /** Firefox **/
+    -o-transition: all 0.5s ease-in-out; /** Opera **/
+
+}
+
 
