@@ -26,6 +26,12 @@ $(document).ready(function() {
     };
 
     var card = {
+
+        xCoordinateStart: 0,
+        xCoordinateEnd: 0,
+        yCoordinateStart: 0,
+        xCoordinateEnd: 0,
+
         initializer: function () {
             var self = this;
 
@@ -35,16 +41,32 @@ $(document).ready(function() {
         like: function () {
             var self = this;
             var $card = $('.card');
-            // $card.on('touchstart', self.touchStart());
 
-            $card.on('touchstart', self.touchStart).on('touchend', self.touchEnd);
+            $card.on('touchstart', function (e) {
+                self.touchStart(e);
+            }).on('touchend', function (e) {
+                self.touchEnd(e);
+            });
         },
 
-        touchStart: function () {
+        touchStart: function (e) {
+            var touch = e.originalEvent.touches[0];
+
             $(this).addClass('like');
+            card.xCoordinateStart = touch.pageX;
+            card.yCoordinateStart = touch.pageY;
         },
 
-        touchEnd: function () {
+        touchEnd: function (e) {
+            var self = this,
+                coordinateLogic,
+                touch = e.originalEvent.changedTouches[0];
+
+            card.xCoordinateEnd = touch.pageX;
+            card.yCoordinateEnd = touch.pageY;
+
+            coordinateLogic = self.computeIntent();
+
             $(this).addClass('leave');
             $(this).fadeOut(400);
         }
