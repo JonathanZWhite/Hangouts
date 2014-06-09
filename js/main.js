@@ -69,9 +69,9 @@ $(document).ready(function() {
             userIntent = self.computeIntent();
 
             if (userIntent === 'left') {
-                alert('left');
+
             } else {
-                alert('right');
+
             }
 
             $(context).addClass('leave');
