@@ -52,7 +52,7 @@ $(document).ready(function() {
         touchStart: function (e, context) {
             var touch = e.originalEvent.touches[0];
 
-            $(context).addClass('like');
+            // $(context).addClass('like');
             card.xCoordinateStart = touch.pageX;
             card.yCoordinateStart = touch.pageY;
 
@@ -69,12 +69,11 @@ $(document).ready(function() {
             userIntent = self.computeIntent();
 
             if (userIntent === 'left') {
-
+                $(context).addClass('leaveLeft');
             } else {
-
+                $(context).addClass('leaveRight');
             }
 
-            $(context).addClass('leave');
             $(context).fadeOut(400);
         },
 
@@ -86,6 +85,8 @@ $(document).ready(function() {
             } else {
                 intent = 'left';
             }
+
+            return intent;
         }
     };
 

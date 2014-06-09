@@ -165,8 +165,20 @@ html {
   transition: transform 200ms ease-in;  
 }
 
+.leaveLeft {
+  transform: translateX(-100%) rotate(-60deg);
+  -webkit-transform: translateX(-100%) rotate(-60deg);
+  -moz-transform: translateX(-100%) rotate(-60deg);
+  -ms-transform: translateX(-100%) rotate(-60deg);  
+  -o-transform: translateX(-100%) rotate(-60deg);   
+  transform: translateX(-100%) rotate(-60deg);
+  -webkit-transition: -webkit-transform 400ms ease-in;
+  -moz-transition: -moz-transform 400ms ease-in;
+  -o-transition: -ms-transform 400ms ease-in;
+  transition: transform 400ms ease-in;  
+}
 
-.leave {
+.leaveRight {
   transform: translateX(100%) rotate(60deg);
   -webkit-transform: translateX(100%) rotate(60deg);
   -moz-transform: translateX(100%) rotate(60deg);
