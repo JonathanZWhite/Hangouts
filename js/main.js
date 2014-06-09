@@ -42,33 +42,50 @@ $(document).ready(function() {
             var self = this;
             var $card = $('.card');
 
-            $card.on('touchstart', function (e) {
-                self.touchStart(e);
+            $card.on('touchstart', function (event) {
+                self.touchStart(event, this);
             }).on('touchend', function (e) {
-                self.touchEnd(e);
+                self.touchEnd(event, this);
             });
         },
 
-        touchStart: function (e) {
+        touchStart: function (e, context) {
             var touch = e.originalEvent.touches[0];
 
-            $(this).addClass('like');
+            $(context).addClass('like');
             card.xCoordinateStart = touch.pageX;
             card.yCoordinateStart = touch.pageY;
+
         },
 
-        touchEnd: function (e) {
+        touchEnd: function (e, context) {
             var self = this,
-                coordinateLogic,
-                touch = e.originalEvent.changedTouches[0];
+                userIntent,
+                touch = e.changedTouches[0];
 
             card.xCoordinateEnd = touch.pageX;
             card.yCoordinateEnd = touch.pageY;
 
-            coordinateLogic = self.computeIntent();
+            userIntent = self.computeIntent();
 
-            $(this).addClass('leave');
-            $(this).fadeOut(400);
+            if (userIntent === 'left') {
+                alert('left');
+            } else {
+                alert('right');
+            }
+
+            $(context).addClass('leave');
+            $(context).fadeOut(400);
+        },
+
+        computeIntent: function() {
+            var intent;
+
+            if ((card.xCoordinateEnd - card.xCoordinateStart) > 0) {
+                intent = 'right';
+            } else {
+                intent = 'left';
+            }
         }
     };
 
