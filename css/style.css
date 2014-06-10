@@ -110,7 +110,10 @@ html {
   border-radius: 2%; 
   height: 75%;
   margin: 10% auto 0 auto;
-  position: relative;
+  /*position: relative;*/
+  left: 0;
+  right: 0;
+  position: absolute;
   width: 90%;  
 }
 
