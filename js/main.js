@@ -150,13 +150,13 @@ $(document).ready(function() {
     };
 
     var menu = {
-        initializer: function() {
+        initializer: function () {
             var self = this;
 
             self.menuTransition();
         },
 
-        menuTransition:function() {
+        menuTransition: function () {
             $(".navIcon").click(function(){
                 $("#panel").toggleClass("bodySlide");
                 $(".sideMenuContainer").show();
@@ -166,11 +166,43 @@ $(document).ready(function() {
         }
     };
 
+    var chat = {
+        initializer: function () {
+            this.modifyTextArea();
+        },
+
+        modifyTextArea: function () {
+            var scrollHeight = 0;
+            $('.inputArea').on('keypress', function() {
+                // var inputLength = $(this).val().length;
+                // if (inputLength % 40 == 0) {
+                    // $('.chat .input').css('height', (inputLength / 40) * 30);
+                    // alert((inputLength / 40) * 30);
+                    // var inputLength = $(this).val();
+                    // alert($('.inputArea').scrollTop());
+
+                // }
+
+                var scrollTop = $(this).scrollTop();
+
+                if (scrollHeight != scrollTop && scrollTop > 5) {
+                    var currentHeight = $('.input').height();
+                    $('.chat .input').css('height', currentHeight + 30);
+                    scrollHeight = $(this).scrollTop();
+                    console.log('ScrollTop(): ' + $(this).scrollTop());
+                    console.log('ScrollHeight: ' + scrollHeight);
+                } 
+
+            });
+        }
+    };
+
 
     (function() {
         framework.initializer();
         card.initializer();
         menu.initializer();
+        chat.initializer();
     }());
 
 });
