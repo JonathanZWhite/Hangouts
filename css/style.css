@@ -4,6 +4,13 @@
   font-weight: 200;
 }
 
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('../fonts/HelveticaNeueLTPro-Cn.otf');
+  font-weight: 400;
+}
+
+
 
 html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
     margin: 0;
@@ -38,6 +45,11 @@ html {
     width: 100%;
 }
 
+.container {
+  margin: 0 auto;
+  width: 90%;
+}
+
 .plusIcon {
     font-size: 40px;
 }
@@ -57,42 +69,98 @@ html {
   box-shadow:         .25px .25px 3px .25px #ccc;
 }
 
-/* Header
+/* Helper classes */
+
+.darkBrown {
+  color: #5B483B;
+}
+
+.fl {
+  float: left;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fz-14 {
+  font-size: 14px;
+}
+
+.fz-18 {
+  font-size: 18px;
+}
+
+.fz-22 {
+  font-size: 22px;
+}
+
+.mx-2-b {
+  margin-bottom: 2px;
+}
+
+.mx-5-b {
+  margin-bottom: 5px;
+}
+
+.mx-10-b {
+  margin-bottom: 10px;
+}
+
+.mx-15-b {
+  margin-bottom: 15px;
+}
+
+.mx-10-t {
+  margin-top: 10px;
+}
+
+.w-s-n {
+  white-space: normal;
+}
+
+.w-bg {
+  background: #ffffff;
+}
+
+/* Home
    ========================================================================== */
 
-.headerContainer {
-    margin: 0 auto 0 auto;
-    width: 90%;
+.home .header {
+  padding-top: 20px;
 }
 
-.headerLogo {
-    display: block;
-    margin: 0 auto;
-    height: 30px;
+.home .header .container {
+  margin: 0 auto 0 auto;
+  width: 90%;
 }
 
-.headerNav {
+.home .header .logo {
+  height: 30px;
+}
+
+.home .header .nav {
     height: 40px;
     list-style-type: none;
 }
 
-.headerNav li {
+.home .header .nav li {
     color: #ffffff;
     float: left;
     line-height: 40px;
-    margin-top: 3px;
+    margin-top: 6px;
     text-align: center;
     vertical-align: middle;
     width: 60%;
 }
 
-.headerNav li:first-child {
+.home .header .nav li:first-child {
     margin-top: 5px;
     text-align: left;
     width: 20%;
 }
 
-.headerNav li:last-child {
+.home .header .nav li:last-child {
     margin-top: 0px;
     text-align: right;
     width: 20%;
@@ -101,70 +169,87 @@ html {
 /* Cards
    ========================================================================== */
 
-/* GLOBAL */
-
-.cardCopy {
-  color: #666667;
-  font-size: 14px;
-  margin-bottom: 10px; 
-}
-
-.cardTitle {
-  color: #322922;
-  font-size: 22px;
-}
-
-/* LOCAL */
-
 .card {
-  background: radial-gradient(ellipse 187px 184px at 13% 10%, transparent 57px, #ffffff 50px);
-  -webkit-border-radius: 2%; 
-  -moz-border-radius: 2%; 
-  border-radius: 2%; 
-  height: 75%;
-  margin: 10% auto 0 auto;
-  /*position: relative;*/
-  left: 0;
-  right: 0;
-  position: absolute;
-  width: 90%;  
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  min-width: 400px;
+  padding: 0 5%;
+  width: 100%;
 }
 
-.cardAuthor {
-  color: #322922;
-  font-size: 22px;
-  word-wrap: break-all;
+.card > li {
+  /* use inline-block since it gives container width*/
+  display: inline-block;
+  margin-right: 30px;
 }
 
-.cardEventContainer {
-  margin: 40px auto 0 auto;
-  width: 90%;
+.card > li:last-child {
+  margin-right: 0;
 }
 
-.cardLocation {
-  color: #666667;
-  font-size: 14px;
-  word-wrap: break-all;
+.card .single {
+  -webkit-border-radius: 3%; 
+  -moz-border-radius: 3%; 
+  border-radius: 3%; 
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #ffffff;
+  /* Set relative height later */
+  height: 370px; 
+  margin: 4% auto 0 auto;
+  padding: 20px;
+  width: 260px;
+  position: relative;
 }
 
-.cardHeaderContainer {
-  float: left;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;    
-  box-sizing: border-box;         
-  padding: 25px 0 0 15px;
-  width: 60%;
+.card .single:before {
+    content: "";
+    display: block;
+    width: 0; 
+    height: 0; 
+    border: 10px solid transparent;
+    border-top-color: #ffffff; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -20px;
 }
 
-.cardProfile {
-  -webkit-border-radius: 100%; 
-  -moz-border-radius: 100%; 
-  border-radius: 100%; 
-  border: 15px solid transparent;
-  float: left;
-  margin-left: -15px;
-  margin-top: -15px;
-  width: 28%;
+.card .actions {
+  margin: 10px auto;
+  text-align: center;
+  width: 80%;
+}
+
+.card .actions .attend, .card .actions .dismiss {
+  width: 40px;
+}
+
+.card .author {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.card .copy {
+  /*font-size: 14px;*/
+}
+
+.card .profile {
+  -webkit-border-radius: 50%; 
+  -moz-border-radius: 50%; 
+  border-radius: 50%; 
+  border: 2px solid #ffffff;
+  display: block;
+  margin: 17% auto 0 auto;
+  width: 18%;
+}
+
+.card .leftSubhead, .card .rightSubhead {
+  width: 50%;
 }
 
 /* TRANSITIONS */
@@ -181,17 +266,16 @@ html {
   transition: transform 200ms ease-in;  
 }
 
-.leaveLeft {
-  transform: translateX(-100%) rotate(-60deg);
-  -webkit-transform: translateX(-100%) rotate(-60deg);
-  -moz-transform: translateX(-100%) rotate(-60deg);
-  -ms-transform: translateX(-100%) rotate(-60deg);  
-  -o-transform: translateX(-100%) rotate(-60deg);   
-  transform: translateX(-100%) rotate(-60deg);
-  -webkit-transition: -webkit-transform 400ms ease-in;
-  -moz-transition: -moz-transform 400ms ease-in;
-  -o-transition: -ms-transform 400ms ease-in;
-  transition: transform 400ms ease-in;  
+.dimissAnimation {
+  transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%); 
+  -o-transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 200ms ease-in;
+  -moz-transition: -moz-transform 200ms ease-in;
+  -o-transition: -ms-transform 200ms ease-in;
+  transition: transform 200ms ease-in;  
 }
 
 .leaveRight {
@@ -279,6 +363,44 @@ html {
 /* Chat
    ========================================================================== */
 
+/* Header */
+
+.chat .header {
+  padding-top: 10px;
+}
+
+.chat .header .container {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.chat .header .nav {
+    height: 40px;
+    list-style-type: none;
+}
+
+.chat .header .nav li {
+    color: #ffffff;
+    float: left;
+    line-height: 40px;
+    margin-top: 4px;
+    text-align: center;
+    vertical-align: middle;
+    width: 60%;
+}
+
+.chat .header .nav li:first-child {
+    margin-top: 5px;
+    text-align: left;
+    width: 20%;
+}
+
+.chat .header .nav li:last-child {
+    margin-top: 0px;
+    text-align: right;
+    width: 20%;
+}
+
 .chatEvent {
   color: #9F836B;
 }
@@ -333,7 +455,6 @@ html {
 }
 
 .chat .inputArea {
-  /*background: red;*/
   border: none;
   -webkit-box-sizing: border-box; 
   -moz-box-sizing: border-box;
@@ -341,6 +462,7 @@ html {
   display: block;
   font-size: 14px;
   height: 100%;
+  resize: none;
   margin: 0 auto;
   padding: 15px 10px 15px 10px;
   width: 90%;

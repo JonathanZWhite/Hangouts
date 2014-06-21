@@ -36,10 +36,10 @@ $(document).ready(function() {
         initializer: function () {
             var self = this;
 
-            self.like();
+            self.dismiss();
         },
 
-        like: function () {
+        dismiss: function () {
             var self = this;
             var $card = $('.card');
 
@@ -53,7 +53,6 @@ $(document).ready(function() {
         touchStart: function (e, context) {
             var touch = e.originalEvent.touches[0];
 
-            // $(context).addClass('like');
             card.xCoordinateStart = touch.pageX;
             card.yCoordinateStart = touch.pageY;
 
@@ -110,42 +109,15 @@ $(document).ready(function() {
             card.xCoordinateEnd = touch.pageX;
             card.yCoordinateEnd = touch.pageY;
 
-            userIntent = self.computeIntent();
-
-            // Prepends new card template
-            $('.card').before(cardTemplate);
-            // Sets values of card template
-            $('.cardProfile').first().attr('src', mockData.card_list[self.cardIndex].img);
-            $('.cardAuthor').first().html(mockData.card_list[self.cardIndex].author);
-            $('.cardLocation').first().html('in ' + mockData.card_list[self.cardIndex].location);
-            $('#cardTitle').first().html(mockData.card_list[self.cardIndex].title);
-            $('#description').first().html(mockData.card_list[self.cardIndex].description);
-            $('#when').first().html(mockData.card_list[self.cardIndex].when);
-            $('#going').first().html(mockData.card_list[self.cardIndex].going);
-
-            if (userIntent === 'left') {
-                $lastCard.addClass('leaveLeft');
-            } else {
-                $lastCard.addClass('leaveRight');
+            if(card.yCoordinateStart - card.yCoordinateEnd > 70) {
+                var $target = $(e.target).closest('.card li');
+                $target.addClass('dimissAnimation');
+                $target.fadeOut(200, function () {
+                    $target.remove();
+                });
             }
-
-            $('.card').last().fadeOut(400, function () {
-                $lastCard.remove();
-            });
 
             self.cardIndex++;
-        },
-
-        computeIntent: function() {
-            var intent;
-
-            if ((card.xCoordinateEnd - card.xCoordinateStart) > 0) {
-                intent = 'right';
-            } else {
-                intent = 'left';
-            }
-
-            return intent;
         }
     };
 
@@ -187,10 +159,12 @@ $(document).ready(function() {
 
                 if (scrollHeight != scrollTop && scrollTop > 5) {
                     var currentHeight = $('.input').height();
-                    $('.chat .input').css('height', currentHeight + 30);
+                    if (currentHeight < 140) {
+                        $('.chat .input').animate({
+                            height: currentHeight + 30
+                        }, 200);
+                    }
                     scrollHeight = $(this).scrollTop();
-                    console.log('ScrollTop(): ' + $(this).scrollTop());
-                    console.log('ScrollHeight: ' + scrollHeight);
                 } 
 
             });
