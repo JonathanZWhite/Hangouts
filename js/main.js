@@ -48,6 +48,14 @@ $(document).ready(function() {
             }).on('touchend', function (e) {
                 self.touchEnd(event, this);
             });
+
+            $('.card .dismiss').on('click', function (e) {
+                var $target = $(e.target).closest('.card li');
+                $target.addClass('dimissAnimation');
+                $target.fadeOut(300, function () {
+                    $target.remove();
+                });
+            });
         },
 
         touchStart: function (e, context) {
@@ -112,7 +120,7 @@ $(document).ready(function() {
             if(card.yCoordinateStart - card.yCoordinateEnd > 70) {
                 var $target = $(e.target).closest('.card li');
                 $target.addClass('dimissAnimation');
-                $target.fadeOut(200, function () {
+                $target.fadeOut(300, function () {
                     $target.remove();
                 });
             }
