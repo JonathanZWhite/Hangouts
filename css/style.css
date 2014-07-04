@@ -47,7 +47,8 @@ html {
 
 .container {
   margin: 0 auto;
-  width: 90%;
+  height: 100%;
+  width: 100%;
 }
 
 .plusIcon {
@@ -173,19 +174,12 @@ html {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  min-width: 400px;
-  padding: 0 5%;
+  height: 100%;
   width: 100%;
 }
 
-.card > li {
-  /* use inline-block since it gives container width*/
-  display: inline-block;
-  margin-right: 30px;
-}
-
-.card > li:last-child {
-  margin-right: 0;
+.card .content {
+  min-height: 340px;
 }
 
 .card .single {
@@ -198,6 +192,7 @@ html {
   background: #ffffff;
   /* Set relative height later */
   height: 370px; 
+  min-height: 370px;
   margin: 4% auto 0 auto;
   padding: 20px;
   width: 260px;
@@ -261,21 +256,22 @@ html {
   -o-transform: translateX(10%) rotate(5deg);
   transform: translateX(10%) rotate(5deg);
   -webkit-transition: -webkit-transform 200ms ease-in;
-  -moz-transition: -moz-transform 300ms ease-in;
-  -o-transition: -ms-transform 300ms ease-in;
-  transition: transform 300ms ease-in;  
-}
-
-.dimissAnimation {
-  transform: translateY(-100%);
-  -webkit-transform: translateY(-100%);
-  -moz-transform: translateY(-100%);
-  -ms-transform: translateY(-100%); 
-  -o-transform: translateY(-100%);
-  -webkit-transition: -webkit-transform 200ms ease-in;
   -moz-transition: -moz-transform 200ms ease-in;
   -o-transition: -ms-transform 200ms ease-in;
   transition: transform 200ms ease-in;  
+}
+
+.leaveLeft {
+  transform: translateX(-100%) rotate(-60deg);
+  -webkit-transform: translateX(-100%) rotate(-60deg);
+  -moz-transform: translateX(-100%) rotate(-60deg);
+  -ms-transform: translateX(-100%) rotate(-60deg);  
+  -o-transform: translateX(-100%) rotate(-60deg);   
+  transform: translateX(-100%) rotate(-60deg);
+  -webkit-transition: -webkit-transform 400ms ease-in;
+  -moz-transition: -moz-transform 400ms ease-in;
+  -o-transition: -ms-transform 400ms ease-in;
+  transition: transform 400ms ease-in;  
 }
 
 .leaveRight {

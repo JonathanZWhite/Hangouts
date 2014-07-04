@@ -36,10 +36,10 @@ $(document).ready(function() {
         initializer: function () {
             var self = this;
 
-            self.dismiss();
+            self.like();
         },
 
-        dismiss: function () {
+        like: function () {
             var self = this;
             var $card = $('.card');
 
@@ -48,19 +48,12 @@ $(document).ready(function() {
             }).on('touchend', function (e) {
                 self.touchEnd(event, this);
             });
-
-            $('.card .dismiss').on('click', function (e) {
-                var $target = $(e.target).closest('.card li');
-                $target.addClass('dimissAnimation');
-                $target.fadeOut(300, function () {
-                    $target.remove();
-                });
-            });
         },
 
         touchStart: function (e, context) {
             var touch = e.originalEvent.touches[0];
 
+            // $(context).addClass('like');
             card.xCoordinateStart = touch.pageX;
             card.yCoordinateStart = touch.pageY;
 
@@ -70,9 +63,9 @@ $(document).ready(function() {
             var self = this,
                 userIntent,
                 touch = e.changedTouches[0],
-                $lastCard = $('.card').last(),
-                $newCard = $('.card').first(),
-                cardTemplate = '<section class="card"><img class="cardProfile" src=""><header class="overflowAuto"><div class="cardHeaderContainer"><h1 class="cardAuthor"></h1><p class="cardLocation"></p></div></header><div class="cardEventContainer"><h1 class="cardTitle" id="cardTitle"></h1><p class="cardCopy" id="description"></p><h1 class="cardTitle">When</h1><p class="cardCopy" id="when"></p><h1 class="cardTitle">Where</h1><p class="cardCopy" id="where">Swipe right to find out!</p><h1 class="cardTitle">Going</h1><p class="cardCopy" id="going"></p></div></section>',
+                $lastCard = $('.single').last(),
+                $newCard = $('.single').first(),
+                cardTemplate = '<div class="single"><div class="content"><h1 class="fw-400 fz-22 mx-10-b darkBrown" id="title"></h1><h2 class="fw-400 fz-18 mx-2-b darkBrown">Hangout</h2><p class="fz-14 mx-5-b w-s-n" id="description"></p><h2 class="fw-400 fz-18 mx-2-b darkBrown">When</h2><p class="copy fz-14 mx-5-b w-s-n" id="when"></p><div class="leftSubhead fl mx-15-b"><h2 class="fw-400 fz-18 mx-2-b darkBrown">Ages</h2><p class="fz-14 mx-5-b" id="ages"></p></div><div class="rightSubhead fl mx-15-b "><h2 class="subhead fw-400 fz-18 mx-2-b darkBrown">Going</h2><p class="copy fz-14 mx-5-b" id="going"></p></div><div class="actions w-s-n"><img class="dismiss" src="img/dismissIcon.png"><img class="attend" src="img/attendIcon.png"></div></div><img class="profile" src="img/profile1.png"><div class="author" id="author"></div>',
                 mockData = {
                     "card_list": [
                         {
@@ -81,6 +74,7 @@ $(document).ready(function() {
                             "location": "Santa Monica",
                             "title": "Example 1",
                             "description": "test1",
+                            "ages": "123",
                             "when": "test1",
                             "going": "test1"
                         },
@@ -90,6 +84,7 @@ $(document).ready(function() {
                             "location": "Orange County",
                             "title": "Example 2",
                             "description": "test2",
+                            "ages": "123",
                             "when": "test2",
                             "going": "test2"
                         },
@@ -99,6 +94,7 @@ $(document).ready(function() {
                             "location": "Orange County",
                             "title": "Example 3",
                             "description": "test3",
+                            "ages": "123",
                             "when": "test3",
                             "going": "test3"
                         },
@@ -108,6 +104,7 @@ $(document).ready(function() {
                             "location": "Orange County",
                             "title": "Example 4",
                             "description": "test4",
+                            "ages": "123",
                             "when": "test4",
                             "going": "test4"
                         }
@@ -117,15 +114,43 @@ $(document).ready(function() {
             card.xCoordinateEnd = touch.pageX;
             card.yCoordinateEnd = touch.pageY;
 
-            if(card.yCoordinateStart - card.yCoordinateEnd > 70) {
-                var $target = $(e.target).closest('.card li');
-                $target.addClass('dimissAnimation');
-                $target.fadeOut(300, function () {
-                    $target.remove();
-                });
+            userIntent = self.computeIntent();
+
+            // Prepends new card template
+            $('.single').before(cardTemplate);
+            // Sets values of card template
+            $('#profile').first().attr('src', mockData.card_list[self.cardIndex].img);
+            $('#author').first().html(mockData.card_list[self.cardIndex].author);
+            $('#location').first().html('in ' + mockData.card_list[self.cardIndex].location);
+            $('#title').first().html(mockData.card_list[self.cardIndex].title);
+            $('#description').first().html(mockData.card_list[self.cardIndex].description);
+            $('#ages').first().html(mockData.card_list[self.cardIndex].ages);
+            $('#when').first().html(mockData.card_list[self.cardIndex].when);
+            $('#going').first().html(mockData.card_list[self.cardIndex].going);
+
+            if (userIntent === 'left') {
+                $lastCard.addClass('leaveLeft');
+            } else {
+                $lastCard.addClass('leaveRight');
             }
 
+            $('.single').last().fadeOut(400, function () {
+                $lastCard.remove();
+            });
+
             self.cardIndex++;
+        },
+
+        computeIntent: function() {
+            var intent;
+
+            if ((card.xCoordinateEnd - card.xCoordinateStart) > 0) {
+                intent = 'right';
+            } else {
+                intent = 'left';
+            }
+
+            return intent;
         }
     };
 
